@@ -93,25 +93,23 @@ Las características generales como público son:
 
 | Nombre                | Rol         | Linkedin                                                             | Portafolio                                   |
 |-----------------------|-------------|----------------------------------------------------------------------|----------------------------------------------|
-| Elisa L               | PM          |[Linkedin](https://www.linkedin.com/in/elilucero)                     |https://www.behance.net/elilucero             |
-| Yohan Rodriguez       | Testing     |[Linkedin](https://www.linkedin.com/in/yohanrodri/)                   |https://github.com/Rhanyojs                   |
-| Daily Fuenmayor Bedoya| UX UI       |[Linkedin](https://www.linkedin.com/in/daily-fuenmayor-bedoya)        |https://www.behance.net/dailyfuenmayor1       |
-| Inés Muruzábal        | UX UI       |[Linkedin](https://www.linkedin.com/in/inesmuruzabal/)                |https://www.behance.net/inesmuruzabal         |
-| Hugo Catalan          | Front End   |[Linkedin](https://www.linkedin.com/in/hugo-catalan-895886133/)       |https://github.com/hugocatalan                |
-| Mario Calderon        | Front End   |[Linkedin](https://www.linkedin.com/in/mario-calderon-76a099b5/)      |https://portafolio-mario-calderon.netlify.app/|
-| Nicolas Lemos         | Front End   |[Linkedin](https://www.linkedin.com/in/nicolas-lemos)                 |https://github.com/nicolemos                  |
-| Gonzalo Villegas      | Back End    |[Linkedin](https://www.linkedin.com/in/govil-web/ )                   |https://github.com/Govil-web                  |
-| Samir López           | Back End    |[Linkedin](www.linkedin.com/in/samir-lopez-906437268)                 |https://github.com/lopezsDev                  |
-| Zail Vegas            | Back End    |[Linkedin](https://www.linkedin.com/in/zail-vegas-padron/)            |https://github.com/rekzail                    |
-| Agustín Moldavsky     | Back End    |                                                                      |https://github.com/AgustinMolda/PersonalPage  |
-| José Angel suarez     | Back End    |[Linkedin](https://www.linkedin.com/in/angel-suarez-232744210)        |https://github.com/angeljs95                  |
-| Cristian Gomez        | Back End    |[Linkedin](https://www.linkedin.com/in/cristian-gomez-montenegro/)    |https://mi-portafolio-seven-sigma.vercel.app/ |
+| Elisa L                 | PM          |[Linkedin](https://www.linkedin.com/in/elilucero)                     |https://www.behance.net/elilucero             |
+| Agostina Belen Roggero  | Testing     |[Linkedin](https://www.linkedin.com/in/agostina-roggero/)             |https://github.com/AgosRoggero                |
+| Daily Fuenmayor Bedoya  | UX UI       |[Linkedin](https://www.linkedin.com/in/daily-fuenmayor-bedoya)        |https://www.behance.net/dailyfuenmayor1       |
+| Maria Luz Benitez       | UX UI       |[Linkedin](https://www.linkedin.com/in/luz-benitez/)                  |https://github.com/Luxanna27                  |
+| Sofia Plaisant          | UX UI       |[Linkedin](https://www.linkedin.com/in/sofia-plaisant/)               |https://github.com/sofiaplaisant              |
+| Martín Sánchez          | Front End   |[Linkedin](https://github.com/angelsmart86)                           |https://github.com/angelsmart86               |
+| Agustin Prato           | Front End   |[Linkedin](https://www.linkedin.com/in/agustin-prato-05034b292/)      |https://github.com/Moises2024                 |
+| Adolfo Sanchez          | Front End   |[Linkedin](https://www.linkedin.com/in/adolfosanchezlopez)            |https://adolfsan99.github.io/sanchprod/       |
+| Matias Ezequiel Alvarez | Back End    |[Linkedin](https://www.linkedin.com/in/matias-alvarez-b7b165226/)     |https://matiasdev4.github.io/                 |
+| Facundo Rua             | Back End    |[Linkedin](https://www.linkedin.com/in/facundogrua/)                  |https://github.com/Random-Dev143              |
+| Jose Carlos Perdomo     | Back End    |[Linkedin](https://www.linkedin.com/in/perd007/)                      |https://github.com/perd007                    |
 
 
 ## Organización del equipo
 - Slack
 - Discord
-- Trello
+- Github Projects
 
 ## Agradecimientos
 Agradecemos la oportunidad a No Country por ayudarnos a mejorar nuestras habilidades blandas y técnicas.
