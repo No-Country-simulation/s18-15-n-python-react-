@@ -87,7 +87,7 @@ Las características generales como público son:
 
  </a>
 
-[Informar error en Foredu](mailto:esportsmelg@gmail.com)
+[Informar error en la app](mailto:esportsmelg@gmail.com)
 
 ## Colaboradores
 
