@@ -70,8 +70,8 @@ Las características generales como público son:
  </a>
 
 #### FRONT END
-- 
-- 
+- HTML
+- CSS
 - 
 #### BACK END
 - FastAPI
