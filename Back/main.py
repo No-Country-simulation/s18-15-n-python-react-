@@ -4,7 +4,7 @@ from Back.models import UserCreate, UserOut, TaskCreate
 
 app = FastAPI()
 
-@app.on_event("startup")
+@app.lifespan("startup")
 async def startup_db():
     await init_db()
 
