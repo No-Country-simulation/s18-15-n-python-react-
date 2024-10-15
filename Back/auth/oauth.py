@@ -4,7 +4,17 @@ from starlette.config import Config
 from fastapi.responses import RedirectResponse
 from config import CLIENT_ID, CLIENT_SECRET
 from jose import jwt
+from bson import ObjectId
+from datetime import datetime
 import httpx
+import pymongo  
+
+from config import MONGO_DETAILS
+
+# Conectar a MongoDB
+client = pymongo.MongoClient(MONGO_DETAILS)  
+db = client["Taskmanager"]
+users_collection = db['users']
 
 config = Config('.env')
 
@@ -38,12 +48,48 @@ async def auth_callback(request: Request):
         # Decodificar el ID token proporcionando el access_token
         user_info = await parse_id_token(token['id_token'], token['access_token'])
 
+        # **Lógica para registrar el usuario en MongoDB**
+        email = user_info.get('email')
+        first_name = user_info.get('given_name')
+        last_name = user_info.get('family_name', '')
+        profile_img = user_info.get('picture')
+        google_id = user_info.get('sub')
+        email_verified = user_info.get('email_verified', False)
+        last_login = datetime.utcnow()
+
+        # Verificar si el usuario ya existe en la base de datos
+        existing_user = users_collection.find_one({"email": email})
+
+        if existing_user:
+            # Si el usuario ya existe, actualiza la fecha de último inicio de sesión
+            users_collection.update_one(
+                {"_id": existing_user["_id"]},
+                {"$set": {"last_login": last_login}}
+            )
+        else:
+            # Si el usuario no existe, crear un nuevo registro
+            new_user = {
+                "email": email,
+                "first_name": first_name,
+                "last_name": last_name,
+                "profile_img": profile_img,
+                "google_id": google_id,
+                "email_verified": email_verified,
+                "auth_provider": "google",
+                "last_login": last_login,
+                "created_at": last_login,
+                "updated_at": last_login,
+                "tasks": []  # Inicializa la lista de tareas vacía
+            }
+            users_collection.insert_one(new_user)
+
         # Retornar mensaje de bienvenida
         return {"message": f"Welcome user: {user_info.get('given_name', 'Usuario')}, Email: {user_info.get('email', 'No email')}"}
 
     except OAuthError as error:
         print("OAuth error:", error)
         raise HTTPException(status_code=400, detail=str(error))
+
 
 async def parse_id_token(id_token: str, access_token: str):
     """Verificar y decodificar el ID token."""
@@ -60,6 +106,7 @@ async def parse_id_token(id_token: str, access_token: str):
         return payload  # retorno del payload que contiene información del usuario
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al decodificar el ID token: " + str(e))
+
 
 @router.get("/logout")
 async def logout(request: Request):
