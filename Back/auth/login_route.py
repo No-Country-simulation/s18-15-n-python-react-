@@ -3,7 +3,7 @@ from pydantic import BaseModel, EmailStr
 from passlib.context import CryptContext
 import pymongo
 import jwt  
-from config import MONGO_DETAILS, SECRET_KEY
+from config import MONGO_DETAILS, SECRET_KEY, ALGORITHM
 from bson import ObjectId
 from datetime import datetime, timedelta, timezone
 
@@ -33,7 +33,7 @@ def create_jwt_token(user_id: str) -> str:
         "sub": str(user_id),  # Usar el ID del usuario
         "exp": datetime.now(timezone.utc) + timedelta(hours=1)  # Expira en 1 hora
     }
-    token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+    token = jwt.encode(payload, SECRET_KEY, algorithm= ALGORITHM)
     return token
 
 @router.post("/login", status_code=status.HTTP_200_OK)
