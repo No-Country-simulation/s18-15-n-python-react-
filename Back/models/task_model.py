@@ -5,7 +5,6 @@ from datetime import datetime
 class TaskCreate(BaseModel):
     title: str
     description: Optional[str] = None
-    fecha_creacion: datetime
-    fecha_termino: Optional[datetime]
+    fecha_termino: Optional[datetime] = None
     fecha_finalizado: Optional[datetime] = None
     terminado: bool = False

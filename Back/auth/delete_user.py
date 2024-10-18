@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson import ObjectId
 from bson.errors import InvalidId
 from config import MONGO_DETAILS
-from .oauth_verify import verify_token
+from dependencies import get_user_id 
 
 # Conectar a MongoDB
 client = MongoClient(MONGO_DETAILS)
@@ -14,20 +14,10 @@ tasks_collection = db['tasks']
 # Crear el router
 router = APIRouter()
 
-@router.delete("/users/{user_id}", status_code=status.HTTP_200_OK)
-async def delete_user(user_id: str, current_user: dict = Depends(verify_token)):
-    """Elimina un usuario y todas las tareas relacionadas."""
-    try:
-        object_id = ObjectId(user_id)  # Convertir el user_id a ObjectId
-    except InvalidId:
-        raise HTTPException(status_code=400, detail="ID de usuario inválido.")
-
-    # Verificar si el usuario autenticado tiene permisos
-    if str(object_id) != current_user["sub"]: 
-        raise HTTPException(
-            status_code=403,
-            detail="No tienes permiso para eliminar este usuario."
-        )
+@router.delete("/users/me", status_code=status.HTTP_200_OK)
+async def delete_user(current_user_id: str = Depends(get_user_id)):
+    """Elimina el usuario autenticado y todas las tareas relacionadas."""
+    object_id = ObjectId(current_user_id)  # Convertir el user_id a ObjectId
 
     # Intentar eliminar al usuario
     result = users_collection.delete_one({"_id": object_id})

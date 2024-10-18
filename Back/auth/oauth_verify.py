@@ -1,7 +1,8 @@
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from config import SECRET_KEY
+from config import SECRET_KEY,  ALGORITHM
+
 from datetime import datetime, timezone
 from pydantic import BaseModel
 
@@ -20,11 +21,9 @@ def verify_token(token: str = Depends(oauth2_scheme)):
     
     try:
         # Decodificar el token
-        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        payload = jwt.decode(token, SECRET_KEY, algorithms= [ALGORITHM])
         user_id: str = payload.get("sub")  # Extraer el campo 'sub' (ID del usuario)
         
-        print(f"Payload decodificado: {payload}")  # Log del payload
-
         if user_id is None:
             raise credentials_exception
 

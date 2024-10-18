@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, HTTPException
 from authlib.integrations.starlette_client import OAuth, OAuthError
 from starlette.config import Config
 from fastapi.responses import RedirectResponse
-from config import CLIENT_ID, CLIENT_SECRET, MONGO_DETAILS, SECRET_KEY, REDIRECT_URI
+from config import CLIENT_ID, CLIENT_SECRET, MONGO_DETAILS, SECRET_KEY, REDIRECT_URI, ALGORITHM
 from jose import jwt
 from bson import ObjectId
 from datetime import datetime, timedelta
@@ -28,13 +28,13 @@ oauth.register(
 
 router = APIRouter()
 
-def create_jwt_token(email: str) -> str:
+def create_jwt_token(user_id: str) -> str:
     """Genera un token JWT para el usuario autenticado."""
     payload = {
-        "sub": email,
+        "sub": str(user_id),  # Convierte el ObjectId a string
         "exp": datetime.utcnow() + timedelta(hours=1)  # El token expira en 1 hora
     }
-    token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+    token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
     return token
 
 @router.get("/login")
@@ -69,11 +69,17 @@ async def auth_callback(request: Request):
         existing_user = users_collection.find_one({"email": email})
 
         if existing_user:
-            # Si el usuario ya existe, actualiza la fecha de último inicio de sesión
+    # Si el usuario ya existe, actualiza la fecha de último inicio de sesión
             users_collection.update_one(
                 {"_id": existing_user["_id"]},
                 {"$set": {"last_login": last_login}}
             )
+            token = create_jwt_token(str(existing_user["_id"]))  # Convertir a string
+            return {
+                "token": token,
+                "message": f"Welcome user: {first_name}, Email: {email}"                
+            }
+
         else:
             # Crear un nuevo usuario si no existe
             new_user = {
@@ -91,13 +97,13 @@ async def auth_callback(request: Request):
             }
             users_collection.insert_one(new_user)
 
-        # Generar un JWT para el usuario autenticado
-        jwt_token = create_jwt_token(email)
+            # Generar un JWT para el nuevo usuario
+            jwt_token = create_jwt_token(new_user["_id"])  # Usar el ID del nuevo usuario
 
-        return {
-            "message": f"Welcome user: {first_name}, Email: {email}",
-            "token": jwt_token  # Envía el token JWT al frontend
-        }
+            return {
+                "message": f"Welcome user: {first_name}, Email: {email}",
+                "token": jwt_token  # Envía el token JWT al frontend
+            }
 
     except OAuthError as error:
         print("OAuth error:", error)
