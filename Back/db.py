@@ -2,7 +2,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from config import MONGO_DETAILS
 
 client = AsyncIOMotorClient(MONGO_DETAILS)
-database = client.todo_app
+database = client.Taskmanager
 
 # Colecciones
 user_collection = database.get_collection("users")
