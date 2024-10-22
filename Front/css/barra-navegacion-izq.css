@@ -1,6 +1,12 @@
+<!--Fuente Roboto Medium-->
+.roboto-medium {
+    font-family: "Roboto", serif;
+    font-weight: 500;
+    font-style: normal;
+}
 .side-nav {
-            width: 200px;
-            background-color: #f8f9fa;
+            width: 220px;
+            background-color: #FFF1D0;
             padding-top: 80px;
             height: 100%;
             position: fixed;
@@ -10,19 +16,24 @@
             flex-direction: column;
         }
         .nav-items {
-            flex-grow: 1;
+            width: 100%; /* Asegura que los items ocupen todo el ancho */
         }
         .nav-item {
             padding: 15px 20px;
             cursor: pointer;
+            width: 100%; /* Asegura que ocupe todo el ancho */
+            box-sizing: border-box; /* Incluye padding dentro del ancho total */
         }
         .nav-item:hover {
-            background-color: #e9ecef;
+            background-color: #FFC639;
+            width: 100%; /* Asegura que el cambio de color tome todo el ancho */
         }
+        /* Ubica el soporte al final del sidebar */
         .support {
             padding: 15px 20px;
             background-color: #e9ecef;
             border-top: 1px solid #ddd;
+            width: 100%;
         }
         .main-content {
             margin-left: 200px;
@@ -33,6 +44,14 @@
             align-items: center;
             font-size: 24px;
         }
+
+        .icono {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
 
         @media (max-width: 768px) {
             .side-nav {
