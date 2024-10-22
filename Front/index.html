@@ -13,7 +13,9 @@
     <!--Fuente Roboto Medium-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -52,23 +54,89 @@
     <div class="container">
 
         <!--Barra de navegación izquierda-->
-<nav class="side-nav">
-    <div class="nav-items">
-        <div class="nav-item" data-page="inicio"><img src="assets/icons/icons/home.svg" alt="icono inicio" class="icono"><span>Inicio</span></div>
-        <div class="nav-item" data-page="calendario"><img src="assets/icons/icons/calendar.svg" alt="icono inicio" class="icono"><span>Calendario</span></div>
-        <div class="nav-item" data-page="mis-carpetas"><img src="assets/icons/icons/folder.svg" alt="icono inicio" class="icono"><span>Mis Carpetas</span></div>
-        <div class="nav-item" data-page="tareas-completadas"><img src="assets/icons/icons/check_circle.svg" alt="icono inicio" class="icono"><span>Tareas Completadas</span></div>
-        <div class="nav-item" data-page="planifica-plus"><img src="assets/icons/icons/new_releases.svg" alt="icono inicio" class="icono"><span>Planifica Plus</span></div>
-    </div>
-        <div class="nav-item" data-page="soporte"><img src="assets/icons/icons/support_agent.svg" alt="icono soporte" class="icono"><span>Soporte</span></div>
-</nav>
+        <nav class="side-nav">
+            <div class="nav-items">
+                <div class="nav-item" data-page="inicio"><img src="assets/icons/icons/home.svg" alt="icono inicio"
+                        class="icono"><span>Inicio</span></div>
+                <div class="nav-item" data-page="calendario"><img src="assets/icons/icons/calendar.svg"
+                        alt="icono inicio" class="icono"><span>Calendario</span></div>
+                <div class="nav-item" data-page="mis-carpetas"><img src="assets/icons/icons/folder.svg"
+                        alt="icono inicio" class="icono"><span>Mis Carpetas</span></div>
+                <div class="nav-item" data-page="tareas-completadas"><img src="assets/icons/icons/check_circle.svg"
+                        alt="icono inicio" class="icono"><span>Tareas Completadas</span></div>
+                <div class="nav-item" data-page="planifica-plus"><img src="assets/icons/icons/new_releases.svg"
+                        alt="icono inicio" class="icono"><span>Planifica Plus</span></div>
+            </div>
+            <div class="nav-item" data-page="soporte"><img src="assets/icons/icons/support_agent.svg"
+                    alt="icono soporte" class="icono"><span>Soporte</span></div>
+        </nav>
 
         <main class="main-content">
             <!--No tocar page-title-->
             <div id="page-title" hidden></div>
 
             <!--Dentro de Contenido... pueden empezar a crear cada funcionalidad-->
-            <div id="inicio" class="component">Contenido de Inicio</div>
+            <div id="inicio" class="component"><!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>App de Tareas</title>
+                    
+                    <!--Fuente Roboto-->
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+                
+                    <!-- Enlazar a tu archivo de estilos -->
+                    <link rel="stylesheet" href="css/inicio_vista_de_tareas.css">
+                </head>
+                <body>
+                    <div class="container">
+                        <main class="main-content">
+                            <!-- Vista de Inicio de Tareas -->
+                            <div id="inicio" class="component vista-tareas">
+                                <h1>Todas tus tareas</h1>
+                                
+                                <div class="crear-tarea">
+                                    <button>Crear tarea</button>
+                                </div>
+                                
+                                <div class="tareas-grid">
+                                    <div class="tarea">
+                                        <h2>Listas de compras</h2>
+                                        <p>20/11/24 - 9:00hrs</p>
+                                        <p>Urgentes</p>
+                                    </div>
+                                    <div class="tarea">
+                                        <h2>Listas de compras</h2>
+                                        <p>20/11/24 - 9:00hrs</p>
+                                        <p>Otros</p>
+                                    </div>
+                                    <div class="tarea">
+                                        <h2>Listas de compras</h2>
+                                        <p>20/11/24 - 9:00hrs</p>
+                                        <p>Importantes</p>
+                                    </div>
+                                    <div class="tarea">
+                                        <h2>Listas de compras</h2>
+                                        <p>20/11/24 - 9:00hrs</p>
+                                        <p>Todos</p>
+                                    </div>
+                                    <div class="tarea">
+                                        <h2>Listas de compras</h2>
+                                        <p>20/11/24 - 9:00hrs</p>
+                                        <p>Importantes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                
+                    <script src="js/navegacion.js"></script>
+                </body>
+                </html>
+                </div>
             <div id="calendario" class="component" style="display:none;">Contenido de Calendario</div>
             <div id="mis-carpetas" class="component" style="display:none;">Contenido de Mis Carpetas</div>
             <div id="tareas-completadas" class="component" style="display:none;">Contenido de Tareas Completadas</div>

@@ -1,0 +1,94 @@
+/* Fuente general */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Vista de Tareas */
+.vista-tareas {
+    padding: 20px;
+}
+
+.vista-tareas h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.crear-tarea {
+    margin-bottom: 20px;
+}
+
+.crear-tarea button {
+    background-color: #FECF5B;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.crear-tarea button:hover {
+    background-color: #FFA800;
+}
+
+/* Grid de tareas */
+.tareas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.tarea {
+    background-color: #FFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tarea h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.tarea p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Breakpoints para pantallas pequeñas */
+@media (max-width: 720px) {
+    .vista-tareas h1 {
+        font-size: 32px;
+    }
+
+    .crear-tarea button {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .tareas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .tarea h2 {
+        font-size: 20px;
+    }
+
+    .tarea p {
+        font-size: 14px;
+    }
+}
