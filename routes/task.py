@@ -10,19 +10,33 @@ task= APIRouter()
 
 
 #endpoint  para consultar todas las tareas
-@task.get('/tasks')
+@task.get('/tasks',  tags=["tasks"])
 def list_task():
    return taskEntetity(conn.local.task.find())
  
 
 #endpoint  para consultar  una tarea por id
-@task.get('/task/{id}')
+@task.get('/task/{id}', tags=["tasks"])
 def task_by_id(id: str):
+    if(id==None):
+        return "Id esta vacio"
     return taskDescription(conn.local.task.find_one({"_id": ObjectId(id)}))
 
 
+#endpoint  para consultar  una tarea por categoria
+@task.get('/task/category/{category}',  tags=["tasks"])
+def task_by_category(category: str):
+    if(id==None):
+        return "Categoria esta vacia"
+    resp= conn.local.task.find_one({'category': category})
+    if resp == None:
+        return conn.local.task.find_one({'category': category})
+    
+    return taskDescription(conn.local.task.find_one({'category': category}))
+    
+
 #endpoint  para registrat una tarea
-@task.post('/task')
+@task.post('/task',  tags=["tasks"])
 def create_task(task: Task):
     new_task=dict(task)
     response=conn.local.task.insert_one(new_task).inserted_id
@@ -30,8 +44,10 @@ def create_task(task: Task):
 
 
 #endpoint  para modificar una tarea
-@task.put('/task/{id}')
+@task.put('/task/{id}', response_model=Task, tags=["tasks"])
 def update_task(task: Task, id: str):
+    if(id==None):
+        return "Id esta vacio"
     response=conn.local.task.find_one_and_update({
         "_id": ObjectId(id)
     }, {
@@ -41,8 +57,10 @@ def update_task(task: Task, id: str):
 
 
 #endpoint para eliminar una tarea
-@task.delete('/task/{id}')
+@task.delete('/task/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=["Tasks"])
 def delete_task(id: str):
+    if(id==None):
+        return "Id esta vacio"
     conn.local.task.find_one_and_delete({ "_id": ObjectId(id)})
     return Response(status_code=HTTP_204_NO_CONTENT)
 
