@@ -20,7 +20,7 @@
   margin: 0 20px;
 }
 .search-input {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 20px;
@@ -58,8 +58,27 @@
 }
 
 .soporte-espaciado {
-  height: 33%;
+  height: 33vh;
 }
+
+.submenu {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  position: absolute; /* Posiciona el submenú de forma relativa al contenedor */
+  z-index: 1; /* Asegura que el submenú esté sobre otros elementos */
+  padding: 10px;
+  display: none; /* Inicialmente oculto */
+}
+
+.submenu-item {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.submenu-item:hover {
+  background-color: #e0e0e0; /* Efecto hover */
+}
+
 @media (max-width: 768px) {
   .main-content {
     margin-left: 60px;

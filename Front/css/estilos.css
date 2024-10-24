@@ -13,3 +13,7 @@ a {
   display: flex;
   height: 100%;
 }
+
+.logotipo {
+  width: 10rem;
+}

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planifica+</title>
+    <link rel="icon" type="image/svg+xml" href="/Front/assets/app-icons/favicon.svg">
 
     <!--Estilos css-->
     <link rel="stylesheet" href="css/estilos.css">
@@ -24,62 +25,83 @@
 
     <!--Barra superior-->
     <div class="top-bar">
-        <!--Logo-->
-        <svg class="logo" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="#007bff" />
-            <text x="50" y="50" font-size="40" text-anchor="middle" dy=".3em" fill="white">P</text>
-        </svg>
 
+        <!--Logo-->
+        <a href="index.html">
+            <img src="/Front/assets/logo.png" alt="Logotipo Planifica+" class="logotipo">
+        </a>
+
+        <!--Barra de busqueda-->
         <div class="search-bar">
             <input type="text" class="search-input" placeholder="Buscar...">
         </div>
+
+        <!--Usuario-->
         <div class="user-section">
+
+            <!--Icono de notificaciones-->
             <div class="notification-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24">
                     <path fill="#333"
                         d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
                 </svg>
             </div>
-            <a href="login.html">
-                <img src="https://example.com/avatar.jpg" alt="Foto de perfil" class="user-avatar">
-                <span class="user-name">María Pérez</span>
-            </a>
 
-            <svg class="dropdown-icon" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="#333" d="M7 10l5 5 5-5z" />
-            </svg>
+            <!--Imagen de perfil-->
+
+            <img src="/Front/assets/profile.png" alt="Foto de perfil" class="user-avatar">
+            <span class="user-name">María Pérez</span>
+
+
+            <!--Icono de menu desplegable-->
+            <button class="menu-icon">
+                <svg class="dropdown-icon" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="#333" d="M7 10l5 5 5-5z" />
+                </svg>
+            </button>
+            <ul class="menu-options">
+                <li><img src="assets/app-icons/edit_pencil.svg" alt="Icono de carpeta" class="icono-titulo"> Ir al
+                    perfil
+                </li>
+                <li><img src="assets/app-icons/cross.svg" alt="Icono de eliminar" class="icono-titulo"> <a
+                        href="login.html">Cerrar sesión</a>
+                </li>
+            </ul>
         </div>
     </div>
 
+
     <div class="container">
+
         <!--Barra de navegación izquierda-->
         <nav class="side-nav">
             <div class="nav-items">
+
                 <!-- Íconos de la izquierda -->
                 <div class="nav-item" data-page="inicio">
-                    <img src="assets/icons/icons/home.svg" alt="icono inicio" class="icono"><span>Inicio</span>
+                    <img src="assets/app-icons/home.svg" alt="icono inicio" class="icono"><span>Inicio</span>
                 </div>
                 <div class="nav-item" data-page="calendario">
-                    <img src="assets/icons/icons/calendar.svg" alt="icono calendario"
+                    <img src="assets/app-icons/calendar.svg" alt="icono calendario"
                         class="icono"><span>Calendario</span>
                 </div>
                 <div class="nav-item" data-page="mis-carpetas">
-                    <img src="assets/icons/icons/folder.svg" alt="icono carpetas" class="icono"><span>Mis
+                    <img src="assets/app-icons/folder.svg" alt="icono carpetas" class="icono"><span>Mis
                         Carpetas</span>
                 </div>
                 <div class="nav-item" data-page="tareas-completadas">
-                    <img src="assets/icons/icons/check_circle.svg" alt="icono tareas completadas"
+                    <img src="assets/app-icons/check_circle.svg" alt="icono tareas completadas"
                         class="icono"><span>Tareas Completadas</span>
                 </div>
                 <div class="nav-item" data-page="planifica-plus">
-                    <img src="assets/icons/icons/new_releases.svg" alt="icono planifica plus"
+                    <img src="assets/app-icons/new_releases.svg" alt="icono planifica plus"
                         class="icono"><span>Planifica Plus</span>
                 </div>
             </div>
 
             <div class="soporte-espaciado"></div>
             <div class="nav-item" data-page="soporte">
-                <img src="assets/icons/icons/support_agent.svg" alt="icono soporte" class="icono"><span>Soporte</span>
+                <img src="assets/app-icons/support_agent.svg" alt="icono soporte" class="icono"><span>Soporte</span>
             </div>
         </nav>
 
@@ -93,16 +115,16 @@
                 <!-- Título e íconos de vista -->
                 <div class="header-tareas">
                     <div class="titulo-con-icono">
-                        <img src="assets/icons/icons/folder.svg" alt="Icono de carpeta" class="icono-titulo">
+                        <img src="assets/app-icons/folder.svg" alt="Icono de carpeta" class="icono-titulo">
                         <h1 class="titulo">Todas tus tareas</h1>
                     </div>
 
                     <div class="iconos-vista">
                         <button class="btn-vista" id="vista-lista">
-                            <img src="assets/icons/icons/view_list.svg" alt="Icono vista lista" class="icono-vista">
+                            <img src="assets/app-icons/view_list.svg" alt="Icono vista lista" class="icono-vista">
                         </button>
                         <button class="btn-vista" id="vista-cuadricula">
-                            <img src="assets/icons/icons/view_module.svg" alt="Icono vista cuadrícula"
+                            <img src="assets/app-icons/view_module.svg" alt="Icono vista cuadrícula"
                                 class="icono-vista">
                         </button>
                     </div>
@@ -113,7 +135,7 @@
                     <!-- Botón Crear Tarea como tarjeta -->
                     <div class="tarea crear-tarea">
                         <button>
-                            <img src="assets/icons/icons/add_circle.svg" alt="icono agregar tarea" class="icon">
+                            <img src="assets/app-icons/add_circle.svg" alt="icono agregar tarea" class="icon">
                             <span>Crear tarea</span>
                         </button>
                     </div>
@@ -124,14 +146,14 @@
                             <h2>Listas de compras</h2>
                             <div class="menu">
                                 <button class="menu-icon">
-                                    <img src="assets/icons/icons/dots.svg" alt="Menú" class="icono-menu">
+                                    <img src="assets/app-icons/dots.svg" alt="Menú" class="icono-menu">
                                 </button>
                                 <ul class="menu-options">
-                                    <li><img src="assets/icons/icons/folder.svg" alt="Icono de carpeta"
+                                    <li><img src="assets/app-icons/folder.svg" alt="Icono de carpeta"
                                             class="icono-titulo"> Añadir a carpeta</li>
-                                    <li><img src="assets/icons/icons/delete.svg" alt="Icono de eliminar"
+                                    <li><img src="assets/app-icons/delete.svg" alt="Icono de eliminar"
                                             class="icono-titulo"> Eliminar</li>
-                                    <li><img src="assets/icons/icons/edit_pencil.svg" alt="Icono de editar"
+                                    <li><img src="assets/app-icons/edit_pencil.svg" alt="Icono de editar"
                                             class="icono-titulo"> Editar</li>
                                 </ul>
                             </div>
@@ -139,10 +161,11 @@
                         <p>20/11/24 - 9:00hrs</p>
 
                         <!-- Nota añadida -->
-                        <p class="nota">Lorem Ipsum dolor sit amet...</p> <!-- Aquí el usuario puede agregar una nota -->
+                        <p class="nota">Lorem Ipsum dolor sit amet...</p>
+                        <!-- Aquí el usuario puede agregar una nota -->
 
                         <div class="estado">
-                            <img src="assets/icons/icons/radio_button_checked.svg" alt="Icono urgente"
+                            <img src="assets/app-icons/radio_button_checked.svg" alt="Icono urgente"
                                 class="icono-estado">
                             <p>Urgentes</p>
                         </div>
@@ -155,26 +178,26 @@
                             <h2>Listas de compras</h2>
                             <div class="menu">
                                 <button class="menu-icon">
-                                    <img src="assets/icons/icons/dots.svg" alt="" class="icono-menu">
+                                    <img src="assets/app-icons/dots.svg" alt="" class="icono-menu">
                                 </button>
                                 <ul class="menu-options">
-                                    <li><img src="assets/icons/icons/folder.svg" alt="Icono de carpeta"
+                                    <li><img src="assets/app-icons/folder.svg" alt="Icono de carpeta"
                                             class="icono-titulo"> Añadir a carpeta</li>
-                                    <li><img src="assets/icons/icons/delete.svg" alt="Icono de eliminar"
+                                    <li><img src="assets/app-icons/delete.svg" alt="Icono de eliminar"
                                             class="icono-titulo"> Eliminar</li>
-                                    <li><img src="assets/icons/icons/edit_pencil.svg" alt="Icono de editar"
+                                    <li><img src="assets/app-icons/edit_pencil.svg" alt="Icono de editar"
                                             class="icono-titulo"> Editar</li>
                                 </ul>
                             </div>
                         </div>
                         <p>20/11/24 - 9:00hrs</p>
 
-<!-- Nota añadida -->
-<p class="nota">Lorem Ipsum dolor sit amet...</p> <!-- Aquí el usuario puede agregar una nota -->
+                        <!-- Nota añadida -->
+                        <p class="nota">Lorem Ipsum dolor sit amet...</p>
+                        <!-- Aquí el usuario puede agregar una nota -->
 
                         <div class="estado">
-                            <img src="assets/icons/icons/radio_button_checked.svg" alt="Icono otros"
-                                class="icono-estado">
+                            <img src="assets/app-icons/radio_button_checked.svg" alt="Icono otros" class="icono-estado">
                             <p>Otros</p>
                         </div>
                     </div>
@@ -184,26 +207,26 @@
                             <h2>Listas de compras</h2>
                             <div class="menu">
                                 <button class="menu-icon">
-                                    <img src="assets/icons/icons/dots.svg" alt="" class="icono-menu">
+                                    <img src="assets/app-icons/dots.svg" alt="" class="icono-menu">
                                 </button>
                                 <ul class="menu-options">
-                                    <li><img src="assets/icons/icons/folder.svg" alt="Icono de carpeta"
+                                    <li><img src="assets/app-icons/folder.svg" alt="Icono de carpeta"
                                             class="icono-titulo"> Añadir a carpeta</li>
-                                    <li><img src="assets/icons/icons/delete.svg" alt="Icono de eliminar"
+                                    <li><img src="assets/app-icons/delete.svg" alt="Icono de eliminar"
                                             class="icono-titulo"> Eliminar</li>
-                                    <li><img src="assets/icons/icons/edit_pencil.svg" alt="Icono de editar"
+                                    <li><img src="assets/app-icons/edit_pencil.svg" alt="Icono de editar"
                                             class="icono-titulo"> Editar</li>
                                 </ul>
                             </div>
                         </div>
                         <p>20/11/24 - 9:00hrs</p>
 
-<!-- Nota añadida -->
-<p class="nota">Lorem Ipsum dolor sit amet...</p> <!-- Aquí el usuario puede agregar una nota -->
+                        <!-- Nota añadida -->
+                        <p class="nota">Lorem Ipsum dolor sit amet...</p>
+                        <!-- Aquí el usuario puede agregar una nota -->
 
                         <div class="estado">
-                            <img src="assets/icons/icons/radio_button_checked.svg" alt="Icono otros"
-                                class="icono-estado">
+                            <img src="assets/app-icons/radio_button_checked.svg" alt="Icono otros" class="icono-estado">
                             <p>Importantes</p>
                         </div>
                     </div>
@@ -213,26 +236,26 @@
                             <h2>Listas de compras</h2>
                             <div class="menu">
                                 <button class="menu-icon">
-                                    <img src="assets/icons/icons/dots.svg" alt="" class="icono-menu">
+                                    <img src="assets/app-icons/dots.svg" alt="" class="icono-menu">
                                 </button>
                                 <ul class="menu-options">
-                                    <li><img src="assets/icons/icons/folder.svg" alt="Icono de carpeta"
+                                    <li><img src="assets/app-icons/folder.svg" alt="Icono de carpeta"
                                             class="icono-titulo"> Añadir a carpeta</li>
-                                    <li><img src="assets/icons/icons/delete.svg" alt="Icono de eliminar"
+                                    <li><img src="assets/app-icons/delete.svg" alt="Icono de eliminar"
                                             class="icono-titulo"> Eliminar</li>
-                                    <li><img src="assets/icons/icons/edit_pencil.svg" alt="Icono de editar"
+                                    <li><img src="assets/app-icons/edit_pencil.svg" alt="Icono de editar"
                                             class="icono-titulo"> Editar</li>
                                 </ul>
                             </div>
                         </div>
                         <p>20/11/24 - 9:00hrs</p>
 
-<!-- Nota añadida -->
-<p class="nota">Lorem Ipsum dolor sit amet...</p> <!-- Aquí el usuario puede agregar una nota -->
+                        <!-- Nota añadida -->
+                        <p class="nota">Lorem Ipsum dolor sit amet...</p>
+                        <!-- Aquí el usuario puede agregar una nota -->
 
                         <div class="estado">
-                            <img src="assets/icons/icons/radio_button_checked.svg" alt="Icono otros"
-                                class="icono-estado">
+                            <img src="assets/app-icons/radio_button_checked.svg" alt="Icono otros" class="icono-estado">
                             <p>Todos</p>
                         </div>
                     </div>
@@ -242,38 +265,73 @@
                             <h2>Listas de compras</h2>
                             <div class="menu">
                                 <button class="menu-icon">
-                                    <img src="assets/icons/icons/dots.svg" alt="" class="icono-menu">
+                                    <img src="assets/app-icons/dots.svg" alt="" class="icono-menu">
                                 </button>
                                 <ul class="menu-options">
-                                    <li><img src="assets/icons/icons/folder.svg" alt="Icono de carpeta"
+                                    <li><img src="assets/app-icons/folder.svg" alt="Icono de carpeta"
                                             class="icono-titulo"> Añadir a carpeta</li>
-                                    <li><img src="assets/icons/icons/delete.svg" alt="Icono de eliminar"
+                                    <li><img src="assets/app-icons/delete.svg" alt="Icono de eliminar"
                                             class="icono-titulo"> Eliminar</li>
-                                    <li><img src="assets/icons/icons/edit_pencil.svg" alt="Icono de editar"
+                                    <li><img src="assets/app-icons/edit_pencil.svg" alt="Icono de editar"
                                             class="icono-titulo"> Editar</li>
                                 </ul>
                             </div>
                         </div>
                         <p>20/11/24 - 9:00hrs</p>
 
-<!-- Nota añadida -->
-<p class="nota">Lorem Ipsum dolor sit amet...</p> <!-- Aquí el usuario puede agregar una nota -->
+                        <!-- Nota añadida -->
+                        <p class="nota">Lorem Ipsum dolor sit amet...</p>
+                        <!-- Aquí el usuario puede agregar una nota -->
 
                         <div class="estado">
-                            <img src="assets/icons/icons/radio_button_checked.svg" alt="Icono otros"
-                                class="icono-estado">
+                            <img src="assets/app-icons/radio_button_checked.svg" alt="Icono otros" class="icono-estado">
                             <p>Importantes</p>
                         </div>
                     </div>
                     <!-- Replicar para las otras clases como importante y todos -->
-                    </div>
                 </div>
             </div>
+
+
+
+            <div id="calendario" class="component" style="display: none;">
+                Contenido de Calendario
+            </div>
+
+
+
+            <div id="mis-carpetas" class="component " style="display: none;">
+                Contenido de Mis Carpetas
+            </div>
+
+
+
+            <div id="tareas-completadas" class="component" style="display: none;">
+                Contenido de Tareas Completadas
+            </div>
+
+
+
+            <div id="planifica-plus" class="component" style="display: none;">
+                Contenido de Planifica Plus
+            </div>
+
+
+
+            <div id="soporte" class="component" style="display: none;">
+                Contenido de Soporte
+            </div>
+
+            <div id="perfil" class="component" style="display: none;">
+                Contenido de perfil
+            </div>
+
         </main>
     </div>
-
+    </div>
 
     <script src="js/navegacion.js"></script>
+    <SCRIPT src="JS/barra-superior.js"></SCRIPT>"
 </body>
 
 </html>
