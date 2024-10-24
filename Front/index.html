@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/barra-superior.css">
     <link rel="stylesheet" href="css/barra-navegacion-izq.css">
     <link rel="stylesheet" href="css/inicio_vista_de_tareas.css">
+    <link rel="stylesheet" href="css/perfil.css">
 
     <!--Fuente Roboto Medium-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,9 +61,12 @@
                 </svg>
             </button>
             <ul class="menu-options">
-                <li><img src="assets/app-icons/edit_pencil.svg" alt="Icono de carpeta" class="icono-titulo"> Ir al
+
+                <li class="nav-item" data-page="perfil"><img src="assets/app-icons/profile.svg" alt="Icono de carpeta"
+                        class="icono-titulo"> Ir al
                     perfil
                 </li>
+
                 <li><img src="assets/app-icons/cross.svg" alt="Icono de eliminar" class="icono-titulo"> <a
                         href="login.html">Cerrar sesión</a>
                 </li>
@@ -323,7 +327,78 @@
             </div>
 
             <div id="perfil" class="component" style="display: none;">
-                Contenido de perfil
+                <div class="main-container">
+                    <div class="header-container">
+                        <div class="profile-header">
+                            <img src="/Front/assets/app-icons/profile.svg" alt="Mi perfil">
+                            <h2>Mi Perfil</h2>
+                        </div>
+                        <div class="button-container">
+                            <button class="edit-btn" id="editBtn">
+                                <img src="/Front/assets/app-icons/edit_pencil.svg" alt="Editar">
+                                Editar
+                            </button>
+                            <button class="discard-btn" id="discardBtn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                                Descartar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <img class="background-image" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+                            alt="Paisaje de montañas y lago" width="800" height="150">
+                        <img class="profile-photo" src="/Front/assets/profile.png"
+                            alt="Foto de perfil de mujer sonriente" width="200" height="200">
+                    </div>
+
+                    <div class="personal-info">
+                        <h3>Datos personales</h3>
+                        <div class="data-container">
+                            <div class="data-row">
+                                <span class="data-label">Nombre:</span>
+                                <span class="data-value" id="nombreSpan">Maria Alejandra</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Apellido:</span>
+                                <span class="data-value" id="apellidoSpan">Perez Rivero</span>
+                            </div>
+                        </div>
+
+                        <h3>Datos de tu cuenta</h3>
+                        <div class="data-container">
+                            <div class="data-row">
+                                <span class="data-label">Usuario:</span>
+                                <span class="data-value" id="usuarioSpan">marialajandra2</span>
+                            </div>
+                            <div id="passwordContainer">
+                                <div class="data-row" id="passwordStaticRow">
+                                    <span class="data-label">Contraseña:</span>
+                                    <span class="data-value" id="passwordSpan">*******</span>
+                                </div>
+                                <div class="password-fields" id="passwordFields">
+                                    <div class="password-row">
+                                        <span class="data-label">Contraseña actual:</span>
+                                        <input type="password" class="data-value" id="currentPassword">
+                                    </div>
+                                    <div class="password-row">
+                                        <span class="data-label">Contraseña nueva:</span>
+                                        <input type="password" class="data-value" id="newPassword">
+                                    </div>
+                                    <div class="password-row">
+                                        <span class="data-label">Repetir contraseña nueva:</span>
+                                        <input type="password" class="data-value" id="confirmPassword">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </main>
@@ -331,7 +406,8 @@
     </div>
 
     <script src="js/navegacion.js"></script>
-    <SCRIPT src="JS/barra-superior.js"></SCRIPT>"
+    <SCRIPT src="JS/barra-superior.js"></SCRIPT>
+    <SCRIPT src="JS/perfil.js"></SCRIPT>
 </body>
 
 </html>
