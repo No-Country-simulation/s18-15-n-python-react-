@@ -19,15 +19,13 @@ Planifica más y resuelve más
 ![Mockup 2](https://github.com/No-Country-simulation/s18-15-n-python-react-/blob/main/img/Desktop%20-%20Crear%20tarea.png)
 
 </a>
-
+</div>
 
 ### Video Promocional 
 
 
 Pegar aquí directamente video promocional en mínima resolución
 
-
-</div>
 
 ## Información Técnica
 Proyecto para No Country Octubre 2024
