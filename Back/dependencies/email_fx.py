@@ -60,7 +60,7 @@ async def revisar_tareas_vencimiento():
     now = datetime.now(timezone.utc)
     next_24_hours = now + timedelta(hours=24)
 
-    print(f"Verificando tareas entre {now.isoformat()} y {next_24_hours.isoformat()}") 
+    #print(f"Verificando tareas entre {now.isoformat()} y {next_24_hours.isoformat()}") 
 
     # Buscar tareas que venzan en las próximas 24 horas y que no hayan sido notificadas
     tareas_a_vencer = await task_collection.find({
@@ -69,14 +69,14 @@ async def revisar_tareas_vencimiento():
         "terminado": False
     }).to_list(length=None)
 
-    print("Tareas encontradas para notificación:", tareas_a_vencer)
+    #print("Tareas encontradas para notificación:", tareas_a_vencer)
 
-    if tareas_a_vencer:
-        print(f"Se encontraron {len(tareas_a_vencer)} tareas que vencen pronto:")
-        for tarea in tareas_a_vencer:
-            print(f"- Título: {tarea['title']}, Fecha de vencimiento: {tarea['fecha_termino']}, ID de usuario: {tarea['user_id']}")
-    else:
-        print("No se encontraron tareas que vencen en las próximas 24 horas.")
+    # if tareas_a_vencer:
+    #     print(f"Se encontraron {len(tareas_a_vencer)} tareas que vencen pronto:")
+    #     for tarea in tareas_a_vencer:
+    #         print(f"- Título: {tarea['title']}, Fecha de vencimiento: {tarea['fecha_termino']}, ID de usuario: {tarea['user_id']}")
+    # else:
+    #     print("No se encontraron tareas que vencen en las próximas 24 horas.")
 
     all_tasks = await task_collection.find({"terminado": False}).to_list(length=None)
     for tarea in all_tasks:
@@ -85,9 +85,9 @@ async def revisar_tareas_vencimiento():
             # Asegúrate de que fecha_termino sea offset-aware
             if fecha_termino.tzinfo is None:
                 fecha_termino = fecha_termino.replace(tzinfo=timezone.utc)
-            print(f"Tarea: {tarea['title']}, Fecha de vencimiento: {fecha_termino}, Comparación: {now <= fecha_termino <= next_24_hours}")
-        else:
-            print(f"Tarea: {tarea['title']} tiene una fecha de vencimiento no definida.")
+            #print(f"Tarea: {tarea['title']}, Fecha de vencimiento: {fecha_termino}, Comparación: {now <= fecha_termino <= next_24_hours}")
+        #else:
+            #print(f"Tarea: {tarea['title']} tiene una fecha de vencimiento no definida.")
 
     for tarea in tareas_a_vencer:
         user = await user_collection.find_one({"_id": ObjectId(tarea["user_id"])})
@@ -99,6 +99,6 @@ async def revisar_tareas_vencimiento():
                     {"_id": tarea["_id"]},
                     {"$set": {"notifiqued": True}}
                 )
-                print(f"Correo notificado para la tarea '{tarea['title']}' a {user['email']}.")
-            else:
-                print(f"No se pudo enviar el correo para la tarea '{tarea['title']}' a {user['email']}. No se actualizará el estado.")
+            #     print(f"Correo notificado para la tarea '{tarea['title']}' a {user['email']}.")
+            # else:
+            #     print(f"No se pudo enviar el correo para la tarea '{tarea['title']}' a {user['email']}. No se actualizará el estado.")

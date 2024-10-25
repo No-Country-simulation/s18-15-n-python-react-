@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
     print("Base de datos inicializada")
     
     # Iniciar el programador y añadir el trabajo para verificar tareas
-    scheduler.add_job(revisar_tareas_vencimiento, 'interval', minutes=1)
+    scheduler.add_job(revisar_tareas_vencimiento, 'interval', minutes=10)
     scheduler.start()
     print("Programador iniciado y verificando tareas.")
     
