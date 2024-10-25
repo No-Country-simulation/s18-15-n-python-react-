@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 class TaskCreate(BaseModel):
-    id: Optional[str]
+    
     title: str
     description: Optional[str] = None
     fecha_termino: Optional[datetime] = None
