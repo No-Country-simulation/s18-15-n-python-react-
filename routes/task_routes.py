@@ -55,13 +55,24 @@ async def list_task():
 @router.get('/task/carpeta/{category}',  tags=["tasks"])
 async def task_by_category(category: str):
 
-    result= task_collection.find_one({"carpeta": category})
+    result= task_collection.find({'carpeta': category})
 
     if(result==None):
         return "No se encontro esta carpeta"
     
     return taskEntetity(result)
 
+
+#endpoint  para consultar  una tarea por prioridad
+@router.get('/task/prioridad/{prioridad}',  tags=["tasks"])
+async def task_by_prioridad(prioridad: str):
+
+    result= task_collection.find({'prioridad': prioridad})
+
+    if(result==None):
+        return "No se encontro esta carpeta"
+    
+    return taskEntetity(result)
 
 
 #endpoint  para consultar  una tarea por id
@@ -73,10 +84,6 @@ async def task_by_id(id: str):
 
 
  
-
-
-
-
 #endpoint  para modificar una tarea
 @router.put('/task/{id}', response_model=TaskCreate, tags=["tasks"])
 async def update_task(task: TaskCreate, id: str):
