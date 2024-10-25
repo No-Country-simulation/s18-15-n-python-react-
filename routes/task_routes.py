@@ -46,13 +46,13 @@ async def create_task(task: TaskCreate):
     
 
 #endpoint  para consultar todas las tareas
-@router.get('/tasks',  tags=["tasks"])
+@router.get('/',  tags=["tasks"])
 async def list_task():
    return taskEntetity(task_collection.find())
 
 
 #endpoint  para consultar  una tarea por carpeta
-@router.get('/task/carpeta/{category}',  tags=["tasks"])
+@router.get('/carpeta/{category}',  tags=["tasks"])
 async def task_by_category(category: str):
 
     result= task_collection.find({'carpeta': category})
@@ -64,7 +64,7 @@ async def task_by_category(category: str):
 
 
 #endpoint  para consultar  una tarea por prioridad
-@router.get('/task/prioridad/{prioridad}',  tags=["tasks"])
+@router.get('/prioridad/{prioridad}',  tags=["tasks"])
 async def task_by_prioridad(prioridad: str):
 
     result= task_collection.find({'prioridad': prioridad})
@@ -76,7 +76,7 @@ async def task_by_prioridad(prioridad: str):
 
 
 #endpoint  para consultar  una tarea por id
-@router.get('/task/{id}', tags=["tasks"])
+@router.get('/{id}', tags=["tasks"])
 async def task_by_id(id: str):
     if(id==None):
         return "Id esta vacio"
@@ -85,7 +85,7 @@ async def task_by_id(id: str):
 
  
 #endpoint  para modificar una tarea
-@router.put('/task/{id}', response_model=TaskCreate, tags=["tasks"])
+@router.put('/{id}', response_model=TaskCreate, tags=["tasks"])
 async def update_task(task: TaskCreate, id: str):
     if(id==None):
         return "Id esta vacio"
@@ -98,7 +98,7 @@ async def update_task(task: TaskCreate, id: str):
 
 
 #endpoint para eliminar una tarea
-@router.delete('/task/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=["tasks"])
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=["tasks"])
 async def delete_task(id: str):
     if(id==None):
         return "Id esta vacio"
