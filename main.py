@@ -14,7 +14,11 @@ async def lifespan(app: FastAPI):
     yield
 
 # Inicialización de FastAPI
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan,
+                title="FastAPI & Mongo CRUD",
+                description="this is a simple REST API using fastapi and mongodb",
+                version="0.0.1"
+            )
 
 # Middleware de sesión
 app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY)
