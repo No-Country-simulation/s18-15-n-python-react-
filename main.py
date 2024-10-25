@@ -33,7 +33,9 @@ app.include_router(routes_router,  prefix="/task")
 
 
 # Otras rutas
+"""
 @app.get("/")
 async def welcome():
-    """Mensaje de bienvenida en la raíz."""
+    ''''Mensaje de bienvenida en la raíz.'''
     return {"message": "Welcome"}
+"""

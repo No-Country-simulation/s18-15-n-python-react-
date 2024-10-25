@@ -37,13 +37,13 @@ def create_jwt_token(user_id: str) -> str:
     token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
     return token
 
-@router.get("/login")
+@router.get("/login", tags=["users"])
 async def login(request: Request):
     """Redirige al usuario para autenticarse con Google."""
     redirect_uri = REDIRECT_URI
     return await oauth.google.authorize_redirect(request, redirect_uri)
 
-@router.get("/callback")
+@router.get("/callback", tags=["users"])
 async def auth_callback(request: Request):
     """Callback después de que el usuario se autentica con Google."""
     try:
@@ -126,7 +126,7 @@ async def parse_id_token(id_token: str, access_token: str):
         raise HTTPException(status_code=500, detail="Error al decodificar el ID token: " + str(e))
 
 
-@router.get("/logout")
+@router.get("/logout",  tags=["users"])
 async def logout(request: Request):
     """Cierra la sesión del usuario y borra la cookie de sesión."""
     request.session.clear() 

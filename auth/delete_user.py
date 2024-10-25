@@ -14,7 +14,7 @@ tasks_collection = db['tasks']
 # Crear el router
 router = APIRouter()
 
-@router.delete("/users/me", status_code=status.HTTP_200_OK)
+@router.delete("/users/me", status_code=status.HTTP_200_OK, tags=["users"])
 async def delete_user(current_user_id: str = Depends(get_user_id)):
     """Elimina el usuario autenticado y todas las tareas relacionadas."""
     object_id = ObjectId(current_user_id)  # Convertir el user_id a ObjectId

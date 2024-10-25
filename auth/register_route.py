@@ -21,7 +21,7 @@ def get_password_hash(password: str) -> str:
     """Devuelve el hash de una contraseña."""
     return pwd_context.hash(password)
 
-@router.post("/register", status_code=status.HTTP_201_CREATED)
+@router.post("/register", status_code=status.HTTP_201_CREATED, tags=["users"])
 async def register_user(user: UserCreate): 
     """Registra un nuevo usuario con correo y contraseña."""
 
