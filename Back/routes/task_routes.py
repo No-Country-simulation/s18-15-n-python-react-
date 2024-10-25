@@ -136,6 +136,33 @@ async def get_user_tasks(prioridad: str, user_id: str = Depends(get_user_id)):
     
     return {"message": "No hay tareas registradas para este usuario con esta prioridad."}
 
+@router.get("/carpeta/{carpeta}", status_code=status.HTTP_200_OK)
+async def get_user_tasks(carpeta: str, user_id: str = Depends(get_user_id)):
+    """Obtiene todas las tareas no terminadas del usuario autenticado con la carpeta especificada."""
+    
+    # Buscar las tareas en la colección de tareas que correspondan al user_id y la prioridad especificada
+    tasks = await task_collection.find({"user_id": ObjectId(user_id), "carpeta": carpeta}).to_list(length=None)
+
+    if tasks:
+        # Transformar las tareas a una lista
+        tasks_list = [
+            {
+                "id": str(task["_id"]),
+                "title": task["title"],
+                "description": task.get("description"),
+                "fecha_creacion": task["fecha_creacion"],
+                "fecha_termino": task.get("fecha_termino"),
+                "fecha_finalizado": task.get("fecha_finalizado"),
+                "terminado": task["terminado"],
+                "prioridad": task.get("prioridad"),
+                "carpeta": task.get("carpeta")               
+            }
+            for task in tasks
+        ]
+        return {"tasks": tasks_list}
+    
+    return {"message": f"No existe la carpeta {carpeta}."}
+
 
 
 @router.put("/finished/{task_id}", status_code=status.HTTP_200_OK)
