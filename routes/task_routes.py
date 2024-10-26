@@ -45,7 +45,7 @@ async def create_task(task: TaskCreate):
         )
     
 
-#endpoint  para consultar todas las tareas
+#endpoint  para consultar todas las tareas en la bd
 @router.get('/',  tags=["tasks"])
 async def list_task():
    return taskEntetity(task_collection.find())
@@ -60,8 +60,29 @@ async def task_by_category(category: str):
     if(result==None):
         return "No se encontro esta carpeta"
     
+
+#endpoint  para consultar  una tarea por estatus pendiente
+@router.get('/pendientes',  tags=["tasks"])
+async def task_by_pendiente():
+
+    result= task_collection.find({'terminado': False})
+
+    if(result==None):
+        return "No se encontro esta carpeta"
+    
     return taskEntetity(result)
 
+
+#endpoint  para consultar  una tarea por historial
+@router.get('/history',  tags=["tasks"])
+async def task_by_history():
+
+    result= task_collection.find({'terminado': True})
+
+    if(result==None):
+        return "No se encontro esta carpeta"
+    
+    return taskEntetity(result)
 
 #endpoint  para consultar  una tarea por prioridad
 @router.get('/prioridad/{prioridad}',  tags=["tasks"])
