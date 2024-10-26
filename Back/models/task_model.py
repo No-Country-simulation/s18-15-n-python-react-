@@ -12,7 +12,6 @@ class TaskCreate(BaseModel):
     prioridad: Optional[str] = None
 
 class TaskUpdate(BaseModel):
-    title: str
     description: Optional[str] = None
     fecha_termino: Optional[datetime] = None
     fecha_finalizado: Optional[datetime] = None
