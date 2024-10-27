@@ -1,0 +1,92 @@
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+}
+.search-bar {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+.search-input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+.user-section {
+  display: flex;
+  align-items: center;
+}
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.notification-icon svg {
+  width: 24px;
+  height: 24px;
+}
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.user-name {
+  margin-right: 10px;
+}
+.dropdown-icon {
+  cursor: pointer;
+}
+
+.soporte-espaciado {
+  height: 33vh;
+}
+
+.submenu {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  position: absolute; /* Posiciona el submenú de forma relativa al contenedor */
+  z-index: 1; /* Asegura que el submenú esté sobre otros elementos */
+  padding: 10px;
+  display: none; /* Inicialmente oculto */
+}
+
+.submenu-item {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.submenu-item:hover {
+  background-color: #e0e0e0; /* Efecto hover */
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 60px;
+  }
+  .user-name {
+    display: none;
+  }
+  .soporte-espaciado {
+    height: auto;
+  }
+}

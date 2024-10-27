@@ -1,0 +1,283 @@
+/* Ajustes generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header de tareas */
+.header-tareas {
+    display: flex;
+    justify-content: space-between; /* Mantiene el título a la izquierda y los íconos a la derecha */
+    align-items: center; /* Alinea los íconos y el título verticalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    margin-bottom: 20px;
+}
+
+/* Contenedor del título con ícono */
+.titulo-con-icono {
+    display: flex; /* Esto alinea el ícono y el texto en la misma línea */
+    align-items: center; /* Alinea verticalmente el ícono y el texto */
+}
+
+/* Estilos del ícono del titulo */
+.icono-titulo {
+    width: 1em; /* Ajusta el ancho en proporción al tamaño de la fuente del texto */
+    height: 1em; /* Ajusta la altura en proporción al tamaño de la fuente del texto */
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    vertical-align: middle; /* Alinea verticalmente el icono con el texto */
+}
+/* Estilos del ícono del titulo */
+.icono-titulo {
+    width: 1em; /* Ajusta el ancho en proporción al tamaño de la fuente del texto */
+    height: 1em; /* Ajusta la altura en proporción al tamaño de la fuente del texto */
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    vertical-align: middle; /* Alinea verticalmente el icono con el texto */
+}
+/* Título */
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0; /* Elimina márgenes adicionales que puedan desfasar */
+    line-height: 1.2; /* Asegura un buen espaciado entre líneas */
+}
+
+/* Estilos para los iconos de vista */
+.iconos-vista {
+    display: flex;
+    gap: 10px; /* Mantiene espacio entre los íconos */
+    margin-left: auto; /* Empuja los íconos hacia el borde derecho */
+    align-items: center; /* Alinea los iconos verticalmente */
+}
+
+/* Estilos para los botones de vista */
+.btn-vista {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.icono-vista {
+    width: 24px;
+    height: 24px;
+}
+
+/* Cambio de color de fondo al clickear el botón */
+.btn-vista:active {
+    background-color: #FFC639;
+}
+
+/* Grid de tareas */
+.vista-tareas {
+    padding: 20px;
+}
+
+.tareas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Ajustes para la nota */
+.nota {
+    margin-bottom: 10px; /* Espacio debajo de la nota */
+    font-size: 14px;
+    color: #666;
+}
+
+/* Ajustes para el estado (ícono + texto de urgente) */
+.estado {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el ícono y el texto */
+}
+
+.icono-estado {
+    width: 18px; /* Tamaño del icono */
+    height: 18px;
+}
+
+/* Tarjetas de tarea */
+.tarea {
+    background-color: #FFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position:relative;
+}
+
+.tarea.urgente {
+    border-left: 5px solid #FF5252;
+}
+
+.tarea.otros {
+    border-left: 5px solid #00C853;
+}
+
+.tarea.importante {
+    border-left: 5px solid #FFC107;
+}
+
+.tarea.todos {
+    border-left: 5px solid #29B6F6;
+}
+
+/* Encabezado de las tareas (título + menú) */
+.tarea-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tarea-header h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Menú desplegable de opciones */
+.menu {
+    position: relative;
+}
+
+.menu-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Ajusta el ancho si es necesario */
+    height: 40px; /* Ajusta la altura si es necesario */
+    border-radius: 5px; /* Controla los bordes. Si quieres que sea cuadrado, usa un valor bajo */
+}
+
+.icono-menu {
+    width: 20px;
+    height: 20px;
+}
+
+/* Opciones del menú desplegable */
+.menu-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #FFF1D0;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none; /* Mantiene el menú oculto hasta que se active */
+    z-index: 1;
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+.menu-options li {
+    padding: 10px 15px; /* Espaciado interno de los elementos */
+    display: flex;
+    align-items: center; /* Alinea los iconos y el texto verticalmente */
+    gap: 0; /* Espacio entre el ícono y el texto */
+    cursor: pointer;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+.menu-options li:hover {
+    background-color: #FFC639;
+}
+
+/* Ajusta el tamaño de los íconos en las opciones del menú si es necesario */
+.menu-options li img {
+    width: 16px; /* Ajusta el tamaño del ícono */
+    height: 16px;
+}
+
+.icono-titulo {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+/* Mostrar menú al hacer hover o clic */
+.menu-icon:focus + .menu-options,
+.menu-options:hover {
+    display: block;
+}
+
+/* Fecha y hora */
+.tarea p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Pie de la tarjeta: estado de la tarea */
+.estado {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.icono-estado {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+/* Botón Crear tarea */
+.crear-tarea button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF1D0;
+    color: #333;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.crear-tarea button:hover {
+    background-color: #FFC639;
+}
+
+/* Estilos para el ícono */
+.crear-tarea .icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el texto */
+.crear-tarea span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+
+
+

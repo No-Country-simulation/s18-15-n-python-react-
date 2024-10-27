@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planifica+</title>
+
+    <!--Estilos css-->
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <!--/* Botón de cierre */-->
+            <div class="close-button">
+                <a href="index.html"><button class="close-icon">X</button></a>
+            </div>
+            <!--/* Logo centrado */-->
+            <div class="logo">
+                <img src="/Front/assets/logo.png" alt="Logo" class="logotipo" />
+            </div>
+            <h2>Te damos la bienvenida!</h2>
+            <p>Ingresa tus datos abajo</p>
+            <!--/* Formulario de login */-->
+            <form>
+                <label>Correo electrónico</label>
+                <input type="email" placeholder="ejemplo@mail.com" />
+                <!--/* Campo de contraseña con opción de mostrar/ocultar */-->
+                <label>Contraseña</label>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Contraseña" />
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+                    </button>
+                </div>
+                <!--/* Enlace para recuperar contraseña */-->
+                <a href="#" class="forgot-password">
+                    Olvidé mi contraseña
+                </a>
+                <!--/* Botones */-->
+                <button type="submit" class="login-button">
+                    Iniciar sesión
+                </button>
+                <button type="button" class="register-button">
+                    Registrarme
+                </button>
+            </form>
+            <!--/* Login social */-->
+            <div class="social-login">
+                <button>
+                    <img src="/Front/assets/login-icons/googleIcon.svg" alt="Chrome Login" />
+                </button>
+                <button>
+                    <img src="/Front/assets/login-icons/facebookIcon.svg" alt="Facebook Login" />
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

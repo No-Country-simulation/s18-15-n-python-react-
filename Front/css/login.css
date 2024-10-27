@@ -1,0 +1,120 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+.login-box {
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  position: relative;
+  /* Esto permite que la 'X' esté dentro de este contenedor */
+}
+/* Estilos para el botón de cierre */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  /* Alinea la 'X' a la derecha */
+}
+.close-icon {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+/* Centrar el logo */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.password-container {
+  position: relative;
+}
+.password-container input {
+  width: 100%;
+}
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.forgot-password {
+  text-align: center;
+  /* Centra el texto horizontalmente */
+  font-size: 12px;
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: block;
+  /* Asegura que ocupe todo el ancho para poder centrar */
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+.login-button,
+.register-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.social-login {
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Alinea verticalmente */
+  margin-top: 20px;
+  /* Puedes ajustar según sea necesario */
+}
+.social-login img {
+  width: 40px;
+  /* Ajusta según sea necesario */
+  height: 40px;
+  object-fit: contain;
+  margin: 0 10px;
+  /* Espacio entre los botones */
+}
+.social-login button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+h2 {
+  text-align: center;
+  /* Centra el texto horizontalmente */
+  margin-bottom: 10px;
+}
+p {
+  text-align: center;
+  /* Centra el texto horizontalmente */
+  margin-bottom: 20px;
+}
