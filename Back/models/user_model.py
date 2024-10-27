@@ -23,3 +23,10 @@ class UserOut(BaseModel):
     created_at: datetime
     updated_at: datetime
     last_login: Optional[datetime]
+    
+class UserUpdate(BaseModel):
+    password: Optional[str] = None  
+    first_name: Optional[str] = None  
+    last_name: Optional[str] = None  
+    profile_img: Optional[str] = None
+
