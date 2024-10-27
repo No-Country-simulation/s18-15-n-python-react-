@@ -32,7 +32,7 @@ def create_jwt_token(user_id: str) -> str:
     """Genera un token JWT para el usuario autenticado."""
     payload = {
         "sub": str(user_id),  # Convierte el ObjectId a string
-        "exp": datetime.utcnow() + timedelta(hours=1)  # El token expira en 1 hora
+        "exp": datetime.utcnow() + timedelta(hours=10)  # El token expira en 1 hora
     }
     token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
     return token

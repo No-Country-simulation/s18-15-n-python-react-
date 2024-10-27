@@ -1,128 +1,115 @@
 from fastapi import APIRouter, HTTPException, status, Depends, Response
 from bson import ObjectId
-from motor.motor_asyncio import AsyncIOMotorClient
-from datetime import datetime, timezone
 from config import MONGO_DETAILS
-from dependencies import *
+from dependencies import get_user_id
 
-from schemas.task import  taskDescription, taskEntetity
-from starlette.status import HTTP_204_NO_CONTENT
-from models.task_model import TaskCreate
-from typing import List
+from schemas.task import taskDescription, taskEntetity
+from models.task_model import TaskCreate, TaskUpdate
 from pymongo import MongoClient
 
-
 # Conectar a la base de datos MongoDB usando motor
-#client = AsyncIOMotorClient(MONGO_DETAILS)
 client = MongoClient(MONGO_DETAILS)
 db = client["Taskmanager"]
-users_collection = db['users']
-task_collection = db['tasks'] 
+task_collection = db['tasks']
 
 # Crear el router para las rutas de tareas
 router = APIRouter()
 
+# Endpoint para registrar una tarea
+@router.post('/', status_code=status.HTTP_201_CREATED, tags=["tasks"])
+async def create_task(task: TaskCreate, user_id: str = Depends(get_user_id)):
+    new_task = dict(task)
+    new_task["user_id"] = user_id
+    result = task_collection.insert_one(new_task)
 
-
-#endpoint  para registrat una tarea
-@router.post('/',  status_code=status.HTTP_201_CREATED,  tags=["tasks"])
-async def create_task(task: TaskCreate):
-    new_task=dict(task)
-
-    result =   task_collection.insert_one(new_task)
-    
-   
     if result.inserted_id:
-        return {
-            "message": "Tarea registrada correctamente.",
-            "task_id": str(result.inserted_id)  # Retornar el ID de la tarea creada
-           
-        }
+        return {"message": "Tarea registrada correctamente.", "task_id": str(result.inserted_id)}
     else:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Error al registrar la tarea."
-        )
-    
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Error al registrar la tarea.")
 
-#endpoint  para consultar todas las tareas en la bd
-@router.get('/',  tags=["tasks"])
-async def list_task():
-   return taskEntetity(task_collection.find())
+# Endpoint para listar todas las tareas del usuario
+@router.get('/', tags=["tasks"])
+async def list_tasks(user_id: str = Depends(get_user_id)):
+    tasks = list(task_collection.find({"user_id": user_id}))
+    return taskEntetity(tasks)
 
+# Endpoint para consultar tareas por carpeta
+@router.get('/carpeta/{category}', tags=["tasks"])
+async def tasks_by_category(category: str, user_id: str = Depends(get_user_id)):
+    tasks = list(task_collection.find({'user_id': user_id, 'carpeta': category}))
+    if not tasks:
+        return {"message": "No se encontró ninguna tarea en esta carpeta"}
+    return taskEntetity(tasks)
 
-#endpoint  para consultar  una tarea por carpeta
-@router.get('/carpeta/{category}',  tags=["tasks"])
-async def task_by_category(category: str):
+# Endpoint para consultar tareas pendientes
+@router.get('/pendientes', tags=["tasks"])
+async def tasks_by_pending(user_id: str = Depends(get_user_id)):
+    tasks = list(task_collection.find({'user_id': user_id, 'terminado': False}))
+    if not tasks:
+        return {"message": "No se encontraron tareas pendientes"}
+    return taskEntetity(tasks)
 
-    result= task_collection.find({'carpeta': category})
+# Endpoint para consultar tareas finalizadas
+@router.get('/history', tags=["tasks"])
+async def tasks_by_history(user_id: str = Depends(get_user_id)):
+    tasks = list(task_collection.find({'user_id': user_id, 'terminado': True}))
+    if not tasks:
+        return {"message": "No se encontraron tareas finalizadas"}
+    return taskEntetity(tasks)
 
-    if(result==None):
-        return "No se encontro esta carpeta"
-    
+# Endpoint para consultar tareas por prioridad
+@router.get('/prioridad/{prioridad}', tags=["tasks"])
+async def tasks_by_priority(prioridad: str, user_id: str = Depends(get_user_id)):
+    tasks = list(task_collection.find({'user_id': user_id, 'prioridad': prioridad}))
+    if not tasks:
+        return {"message": "No se encontraron tareas con esa prioridad"}
+    return taskEntetity(tasks)
 
-#endpoint  para consultar  una tarea por estatus pendiente
-@router.get('/pendientes',  tags=["tasks"])
-async def task_by_pendiente():
-
-    result= task_collection.find({'terminado': False})
-
-    if(result==None):
-        return "No se encontro esta carpeta"
-    
-    return taskEntetity(result)
-
-
-#endpoint  para consultar  una tarea por historial
-@router.get('/history',  tags=["tasks"])
-async def task_by_history():
-
-    result= task_collection.find({'terminado': True})
-
-    if(result==None):
-        return "No se encontro esta carpeta"
-    
-    return taskEntetity(result)
-
-#endpoint  para consultar  una tarea por prioridad
-@router.get('/prioridad/{prioridad}',  tags=["tasks"])
-async def task_by_prioridad(prioridad: str):
-
-    result= task_collection.find({'prioridad': prioridad})
-
-    if(result==None):
-        return "No se encontro esta carpeta"
-    
-    return taskEntetity(result)
-
-
-#endpoint  para consultar  una tarea por id
+# Endpoint para consultar una tarea por ID
 @router.get('/{id}', tags=["tasks"])
-async def task_by_id(id: str):
-    if(id==None):
-        return "Id esta vacio"
+async def task_by_id(id: str, user_id: str = Depends(get_user_id)):
+    task = task_collection.find_one({"_id": ObjectId(id), "user_id": user_id})
+    if not task:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Tarea no encontrada o acceso no autorizado")
+    return taskDescription(task)
+
+# Endpoint para modificar una tarea
+@router.put('/{id}', response_model=TaskUpdate, tags=["tasks"])
+async def update_task(task: TaskUpdate, id: str, user_id: str = Depends(get_user_id)):
+    updated_fields = task.model_dump(exclude_unset=True)
+    existing_task = task_collection.find_one({"_id": ObjectId(id), "user_id": user_id})
+    
+    if not existing_task:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Tarea no encontrada o acceso no autorizado")
+
+    task_collection.find_one_and_update(
+        {"_id": ObjectId(id), "user_id": user_id},
+        {"$set": updated_fields}
+    )
+
     return taskDescription(task_collection.find_one({"_id": ObjectId(id)}))
 
-
- 
-#endpoint  para modificar una tarea
-@router.put('/{id}', response_model=TaskCreate, tags=["tasks"])
-async def update_task(task: TaskCreate, id: str):
-    if(id==None):
-        return "Id esta vacio"
-    response=task_collection.find_one_and_update({
-        "_id": ObjectId(id)
-    }, {
-        "$set": dict(task)
-    })
-    return taskDescription(task_collection.find_one({"_id": ObjectId(id)}))
-
-
-#endpoint para eliminar una tarea
+# Endpoint para eliminar una tarea
 @router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=["tasks"])
-async def delete_task(id: str):
-    if(id==None):
-        return "Id esta vacio"
-    task_collection.find_one_and_delete({ "_id": ObjectId(id)})
-    return Response(status_code=HTTP_204_NO_CONTENT)
+async def delete_task(id: str, user_id: str = Depends(get_user_id)):
+    task = task_collection.find_one({"_id": ObjectId(id), "user_id": user_id})
+    if not task:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Tarea no encontrada o acceso no autorizado")
 
+    task_collection.find_one_and_delete({"_id": ObjectId(id), "user_id": user_id})
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+# Endpoint para cambiar el estado de "terminado"
+@router.patch('/done/{id}', tags=["tasks"])
+async def toggle_task_status(id: str, user_id: str = Depends(get_user_id)):
+    task = task_collection.find_one({"_id": ObjectId(id), "user_id": user_id})
+    if not task:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Tarea no encontrada o acceso no autorizado")
+
+    new_status = not task.get("terminado", False)
+    task_collection.find_one_and_update(
+        {"_id": ObjectId(id), "user_id": user_id},
+        {"$set": {"terminado": new_status}}
+    )
+
+    return {"message": "Estado de tarea actualizado", "terminado": new_status}
