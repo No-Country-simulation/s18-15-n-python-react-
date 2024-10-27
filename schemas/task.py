@@ -1,3 +1,5 @@
+from bson import ObjectId
+
 def taskDescription(item)-> dict:
     return {
             "id": str(item["_id"]),
@@ -7,9 +9,7 @@ def taskDescription(item)-> dict:
             "fecha_finalizado": item["fecha_finalizado"],
             "carpeta": item["carpeta"],
             "prioridad": item["prioridad"],
-            "terminado": item["terminado"],
-
-            
+            "terminado": item["terminado"],           
         }
 
 def taskEntetity(entity) -> list:

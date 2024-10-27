@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
+from bson import ObjectId
 
 
 class TaskCreate(BaseModel):
-    
     title: str
     description: Optional[str] = None
     fecha_termino: Optional[datetime] = None
@@ -12,16 +12,18 @@ class TaskCreate(BaseModel):
     carpeta: Optional[str] = None
     prioridad: Optional[str] = None
     terminado: bool = False
-    carpeta: Optional[str] = None
-    prioridad: Optional[str] = None
+    user_id: str  = str(ObjectId())
+
 
 class TaskUpdate(BaseModel):
+    title:  Optional[str] = None
     description: Optional[str] = None
     fecha_termino: Optional[datetime] = None
     fecha_finalizado: Optional[datetime] = None
     terminado: bool = False
     carpeta: Optional[str] = None
     prioridad: Optional[str] = None
+    
 
     """
 class TaskCreate(BaseModel):

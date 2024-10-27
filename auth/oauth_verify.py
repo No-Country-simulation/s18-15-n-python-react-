@@ -23,7 +23,6 @@ def verify_token(token: str = Depends(oauth2_scheme)):
         # Decodificar el token
         payload = jwt.decode(token, SECRET_KEY, algorithms= [ALGORITHM])
         user_id: str = payload.get("sub")  # Extraer el campo 'sub' (ID del usuario)
-        
         if user_id is None:
             raise credentials_exception
 
