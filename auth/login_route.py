@@ -36,7 +36,7 @@ def create_jwt_token(user_id: str) -> str:
     token = jwt.encode(payload, SECRET_KEY, algorithm= ALGORITHM)
     return token
 
-@router.post("/login", status_code=status.HTTP_200_OK)
+@router.post("/login", status_code=status.HTTP_200_OK,  tags=["users"])
 async def login_user(user: UserLogin):
     """Inicia sesión con correo y contraseña."""
     
