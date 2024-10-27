@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; 
+    color: #1F2937;
+}
+.container {
+    background-color: white; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+button {
+    font-size: 18px;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #FFE500;
+    font-size: 16px;
+}
+
+.fa-times-circle-o {
+    font-size: 50px;
+    margin-left: 500px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 400px) and (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%; 
+        max-width: 400px;
+        margin: auto;
+    }
+
+    button {
+        width: 100%; /* Hacer que los botones ocupen todo el ancho disponible */
+        max-width: 150px; /* Limitar el ancho máximo de los botones */
+    }
+
+    .fa-times-circle-o {
+        font-size: 50px;
+        margin: 0 auto; /* Centra el icono */
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+        h2 {
+            font-size: 20px; /* Reduce el tamaño del texto en pantallas pequeñas */
+        }
+        button {
+            font-size: 14px; /* Ajusta el tamaño del texto del botón */
+            padding: 8px; /* Reduce el padding */
+        }
+    }
+    
+    @media (max-width: 370px) {
+        .container {
+            padding: 10px;
+            flex-direction: column; /* Mantén la dirección de columna */
+        }
+    }
+}
