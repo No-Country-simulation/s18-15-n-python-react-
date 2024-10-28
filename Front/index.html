@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planifica+</title>
-    <link rel="icon" type="image/svg+xml" href="/Front/assets/app-icons/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="..../Front/assets/app-icons/favicon.svg">
 
     <!--Estilos css-->
     <link rel="stylesheet" href="css/estilos.css">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/inicio_vista_de_tareas.css">
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="css/planifica+.css">
-
+    <link rel="stylesheet" href="css/editar-tarea.css">
     <!--Fuente Roboto Medium-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
 
         <!--Logo-->
         <a href="index.html">
-            <img src="/Front/assets/logo.png" alt="Logotipo Planifica+" class="logotipo">
+            <img src="../Front/assets/logo.png" alt="Logotipo Planifica+" class="logotipo">
         </a>
 
         <!--Barra de busqueda-->
@@ -51,7 +51,7 @@
 
             <!--Imagen de perfil-->
 
-            <img src="/Front/assets/profile.png" alt="Foto de perfil" class="user-avatar">
+            <img src="../Front/assets/profile.png" alt="Foto de perfil" class="user-avatar">
             <span class="user-name">María Pérez</span>
 
 
@@ -86,6 +86,11 @@
                 <div class="nav-item" data-page="inicio">
                     <img src="assets/app-icons/home.svg" alt="icono inicio" class="icono"><span>Inicio</span>
                 </div>
+                <div class="nav-item" data-page="tareas-completadas">
+                    <img src="assets/app-icons/check_circle.svg" alt="icono tareas completadas"
+                        class="icono"><span>Tareas
+                        Completadas</span>
+                </div>
                 <div class="nav-item" data-page="planifica-plus">
                     <img src="assets/app-icons/calendar.svg" alt="icono calendario"
                         class="icono"><span>Calendario</span>
@@ -93,10 +98,6 @@
                 <div class="nav-item" data-page="planifica-plus">
                     <img src="assets/app-icons/folder.svg" alt="icono carpetas" class="icono"><span>Mis
                         Carpetas</span>
-                </div>
-                <div class="nav-item" data-page="tareas-completadas">
-                    <img src="assets/app-icons/check_circle.svg" alt="icono tareas completadas"
-                        class="icono"><span>Tareas Completadas</span>
                 </div>
                 <div class="nav-item" data-page="planifica-plus">
                     <img src="assets/app-icons/new_releases.svg" alt="icono planifica plus"
@@ -139,10 +140,12 @@
                 <div class="tareas-grid">
                     <!-- Botón Crear Tarea como tarjeta -->
                     <div class="tarea crear-tarea">
-                        <button>
-                            <img src="assets/app-icons/add_circle.svg" alt="icono agregar tarea" class="icon">
-                            <span>Crear tarea</span>
-                        </button>
+                        <div class="nav-item" data-page="crear-tarea" style=".nav-item:hover{display: none;}">
+                            <button>
+                                <img src="assets/app-icons/add_circle.svg" alt="icono agregar tarea" class="icon">
+                                <span>Crear tarea</span>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Las tareas -->
@@ -355,8 +358,8 @@
 
                     <!-- Espacio para imágenes -->
                     <div class="image-placeholder" style="width: 15rem;left: 10rem;">
-                        <img src="/Front/assets/planifica+/smartmockup1.png" alt="Laptop" class="laptop-image">
-                        <img src="/Front/assets/planifica+/smartmockup2.png" alt="Tablet" class="tablet-image">
+                        <img src="../Front/assets/planifica+/smartmockup1.png" alt="Laptop" class="laptop-image">
+                        <img src="../Front/assets/planifica+/smartmockup2.png" alt="Tablet" class="tablet-image">
                     </div>
                 </div>
 
@@ -372,12 +375,12 @@
                 <div class="main-container">
                     <div class="header-container">
                         <div class="profile-header">
-                            <img src="/Front/assets/app-icons/profile.svg" alt="Mi perfil">
+                            <img src="../Front/assets/app-icons/profile.svg" alt="Mi perfil">
                             <h2>Mi Perfil</h2>
                         </div>
                         <div class="button-container">
                             <button class="edit-btn" id="editBtn">
-                                <img src="/Front/assets/app-icons/edit_pencil.svg" alt="Editar">
+                                <img src="../Front/assets/app-icons/edit_pencil.svg" alt="Editar">
                                 Editar
                             </button>
                             <button class="discard-btn" id="discardBtn">
@@ -394,7 +397,7 @@
                     <div class="profile-section">
                         <img class="background-image" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
                             alt="Paisaje de montañas y lago" width="800" height="150">
-                        <img class="profile-photo" src="/Front/assets/profile.png"
+                        <img class="profile-photo" src="../Front/assets/profile.png"
                             alt="Foto de perfil de mujer sonriente" width="200" height="200">
                     </div>
 
@@ -441,6 +444,68 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div id="crear-tarea" class="component" style="display: none;">
+                <a href=""><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver </a>
+
+                <h1><i class="fa fa-pencil" aria-hidden="true"></i> Editar tarea</h1>
+
+                <div>
+                    <h3>Titulo</h3>
+                    <input type="text" placeholder="Lista de compras">
+                </div>
+
+                <div class="input-group">
+                    <div>
+                        <h3>Fecha limite</h3>
+                        <input type="date">
+                    </div>
+                    <div>
+                        <h3>Recordatorio</h3>
+                        <select>
+                            <option>Hoy</option>
+                            <option>Mañana</option>
+                            <option>Diario</option>
+                            <option>Calendario</option>
+                        </select>
+                    </div>
+                    <div>
+                        <h3>Prioridad</h3>
+                        <select>
+                            <option>Urgente</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h3>Descripcion</h3>
+                <div class="description-box">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam soluta cupiditate delectus, eos
+                        laboriosam
+                        temporibus accusantium. Consectetur deleniti, beatae eius, culpa officia delectus pariatur,
+                        repudiandae quos
+                        repellendus distinctio veniam sunt.</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima labore tempora alias excepturi
+                        perferendis autem
+                        sapiente laborum quidem commodi cum et quis, tenetur a consectetur culpa facilis impedit
+                        molestias eos.</p>
+
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque nulla aperiam eum illo, unde
+                        nobis! Voluptate
+                        modi, repellendus maxime officiis ipsum repudiandae eligendi earum rerum error consequatur
+                        dignissimos optio
+                        laborum.</p>
+                </div>
+
+                <div class="icon-container">
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                </div>
+
+                <div class="button-container">
+                    <button>Guardar</button>
+                </div>
             </div>
 
         </main>
