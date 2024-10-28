@@ -1,0 +1,252 @@
+/* styles.css */
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: white;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Fondo de humo y animación */
+.smoke-container {
+    position: absolute;
+    width: 105%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.smoke {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    filter: blur(50px);
+}
+
+.smoke.blue {
+    background: #6c5ce7;
+    width: 300px;
+    height: 300px;
+    top: 22%;
+    right: 25%;
+    animation: floatBlue 10s infinite ease-in-out;
+}
+
+.smoke.yellow {
+    background: #FFD700;
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    right: 0%;
+    animation: floatYellow 10s infinite ease-in-out;
+}
+
+@keyframes floatYellow {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes floatBlue {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Contenedor principal */
+.container {
+    width: auto;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+    padding: 0rem;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+.content {
+    margin: 4rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.0rem;
+    color: #333;
+}
+
+h1 span {
+    color: #6c5ce7;
+}
+
+.subtitle {
+    white-space: nowrap; /* Para evitar que el texto se divida en varias líneas */
+    display: inline-block; /* Asegura que el contenedor del texto se ajuste a su contenido */
+}
+
+.subtitle span {
+    color: #ffc107;
+}
+
+.subtitle .highlight {
+    color: #6c5ce7; /* Mismo color que "Planifica+" */
+}
+
+p {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.features {
+    margin: 2rem 0;
+}
+
+.feature {
+    width: 40rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature h3 {
+    color: #6c5ce7;
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+        font-size: 1rem; /* Reduce el tamaño de la fuente para ajustar la altura */
+        line-height: 1.8; /* Ajusta la altura de la línea si es necesario */
+        color: #333; /* Asegura que el texto en los contenedores también sea más oscuro */
+}
+
+.btn-subscribe {
+    background: #6c5ce7;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-subscribe:hover {
+    transform: translateY(-2px);
+}
+
+.price-caption {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 0rem;
+}
+
+/* Ajustes de imagen */
+.image-placeholder {
+    position: relative;
+}
+
+.laptop-image {
+    width: 40rem;
+    height: auto;
+    position: absolute;
+    bottom: -190px; /*No tocar*/
+    right: -20%;
+}
+
+.tablet-image {
+    width: 20rem;
+    height: auto;
+    position: absolute;
+    bottom: -160px; /*No tocar*/
+    right: 0%; /*No tocar*/
+}
+
+/*Ajustes Adicionales
+Para subir más la .laptop-image, disminuye el valor de bottom.
+Para bajar más la .tablet-image, aumenta el valor de bottom.*/
+
+/* Responsivo: Ajustes para tabletas */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .laptop-image,
+    .tablet-image {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        transform: none;
+        margin: 0 auto;
+    }
+
+    .laptop-image {
+        width: 80%;
+        margin-bottom: 1rem;
+    }
+
+    .tablet-image {
+        width: 60%;
+    }
+}
+
+/* Responsivo: Ajustes para móviles */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .features {
+        margin: 1.5rem 0;
+    }
+
+    .feature {
+        padding: 1rem;
+    }
+
+    .btn-subscribe {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}

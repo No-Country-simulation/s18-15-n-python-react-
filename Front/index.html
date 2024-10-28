@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/barra-navegacion-izq.css">
     <link rel="stylesheet" href="css/inicio_vista_de_tareas.css">
     <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/planifica+.css">
 
     <!--Fuente Roboto Medium-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,11 +86,11 @@
                 <div class="nav-item" data-page="inicio">
                     <img src="assets/app-icons/home.svg" alt="icono inicio" class="icono"><span>Inicio</span>
                 </div>
-                <div class="nav-item" data-page="calendario">
+                <div class="nav-item" data-page="planifica-plus">
                     <img src="assets/app-icons/calendar.svg" alt="icono calendario"
                         class="icono"><span>Calendario</span>
                 </div>
-                <div class="nav-item" data-page="mis-carpetas">
+                <div class="nav-item" data-page="planifica-plus">
                     <img src="assets/app-icons/folder.svg" alt="icono carpetas" class="icono"><span>Mis
                         Carpetas</span>
                 </div>
@@ -317,7 +318,48 @@
 
 
             <div id="planifica-plus" class="component" style="display: none;">
-                Contenido de Planifica Plus
+
+                <!-- Fondo de humo -->
+                <div class="smoke-container">
+                    <div class="smoke blue"></div>
+                    <div class="smoke yellow"></div>
+                </div>
+
+                <!-- Contenedor principal -->
+                <div class="container" style="
+    margin: 0;
+    padding: 0; display: flex;
+">
+                    <div class="content">
+                        <h1>Suscríbete a <span>Planifica+</span></h1>
+                        <h2 class="subtitle">Y obtén <span>más características</span> <span
+                                class="highlight">Premium</span></h2>
+
+                        <div class="features">
+                            <div class="feature">
+                                <h3>📅 Calendario Avanzado</h3>
+                                <p>Organiza tus tareas con una vista mensual completa y sincronización con otros
+                                    calendarios. Planifica
+                                    tu tiempo de manera eficiente.</p>
+                            </div>
+                            <div class="feature">
+                                <h3>📁 Carpetas Ilimitadas</h3>
+                                <p>Crea todas las carpetas que necesites para organizar tus proyectos. Mantén tu trabajo
+                                    ordenado y
+                                    accesible.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-subscribe">Suscríbete por $15</a>
+                        <p class="price-caption">Más barato que tu café favorito</p>
+                    </div>
+
+                    <!-- Espacio para imágenes -->
+                    <div class="image-placeholder" style="width: 15rem;left: 10rem;">
+                        <img src="/Front/assets/planifica+/smartmockup1.png" alt="Laptop" class="laptop-image">
+                        <img src="/Front/assets/planifica+/smartmockup2.png" alt="Tablet" class="tablet-image">
+                    </div>
+                </div>
+
             </div>
 
 
