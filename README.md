@@ -23,9 +23,7 @@ Planifica más y resuelve más
 
 ### Video Promocional 
 
-
-Pegar aquí directamente video promocional en mínima resolución
-
+https://github.com/user-attachments/assets/cba26c07-1d5d-425a-a842-c2a894a8ae7a
 
 ## Información Técnica
 Proyecto para No Country Octubre 2024
@@ -47,7 +45,7 @@ Las características generales para el público son:
 
 
 ### Url Deploy (dejar cargar 5 minutos):
-[Deploy en Construcción]()
+[Deploy](https://planificamas.vercel.app/)
 
 ### Demo Day:
 [Video Demo Day en Construcción]()
@@ -64,9 +62,9 @@ Las características generales para el público son:
 - AI
 - PS
 
-##### Documentación UX UI (click en imagen)
+##### Documentación UX UI EN CONSTRUCCIÓN (click en imagen)
 
- <a href="https://github.com/No-Country-simulation/s18-15-n-python-react-" target="_blank">
+ <a href="" target="_blank">
 
 <img width="25%"  src="https://github.com/No-Country-simulation/s18-15-n-python-react-/blob/main/img/story%20board%20planifica%20m%C3%A1s%202%20(1).jpg" alt=visual uxui_img >
 
@@ -85,13 +83,6 @@ Las características generales para el público son:
 - Postman
 - Microsoft Workshop	
 
-##### PRUEBAS TESTING (click en imagen)
-
- <a href="https://github.com/No-Country-simulation/s18-15-n-python-react-" target="_blank">
-
-<img width="25%"  src="https://github.com/No-Country-simulation/s18-15-n-python-react-/blob/main/img/story%20board%20planifica%20m%C3%A1s%202.jpg" alt=visual testing_img >
-
- </a>
 
 [Informar error en la app](mailto:esportsmelg@gmail.com)
 
