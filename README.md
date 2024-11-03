@@ -3,7 +3,7 @@ Aplicación organizadora de tareas. Nuestra webapp implementa una modalidad intu
 
 <div align="center" >
 
-![Logo EN CONSTRUCCIÓN](https://github.com/No-Country-simulation/s18-15-n-python-react-/blob/main/img/logo_01.png) 
+![Logo](https://github.com/No-Country-simulation/s18-15-n-python-react-/blob/main/img/logo_01.png) 
 
 
 Planifica más y resuelve más
@@ -48,7 +48,7 @@ Las características generales para el público son:
 [Deploy](https://planificamas.vercel.app/)
 
 ### Demo Day:
-[Video Demo Day en Construcción]()
+[Video Demo Day](https://youtu.be/BhwAaCfk6IM)
 
 ### Tecnologías utilizadas: 
 #### PM
